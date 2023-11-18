@@ -20,28 +20,21 @@
         e.preventDefault();
         const title=$(frm.title).val();
         const body=$(frm.body).val();
-        if(title==""){
-            alert("제목을 입력하세요!");
+        if(title=="" || body==""){
+            alert("제목과 내용을 입력하세요!");
             $(frm.title).focus();
-            return;
-        }
-
-        if(body==""){
-            alert("내용을 입력하세요!");
-            $(frm.body).focus();
-            return;
-        }
-
-        if(confirm("게시글을 등록하실래요?")){
-            //게시글 등록
-            const email=sessionStorage.getItem("email");
-            const date=moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
-            const data = {title, body, email, date};
-            console.log(data);
-            await addDoc(collection(db,"posts"),data);
-            alert("게시글이 등록되었습니다!");
+        }else{
+            if(confirm("게시글을 등록하실래요?")){
+              //게시글 등록
+              const email=sessionStorage.getItem("email");
+              const date=moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
+              //const data = {title, body, email, date};
+              //console.log(data);
+              await addDoc(collection(db,"posts"),{title, body, email, date});
+              alert("게시글이 등록되었습니다!");
            
-            location.href="/posts";
+              location.href="/posts";
+            }
         }
     });
 </script>
