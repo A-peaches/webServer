@@ -14,7 +14,7 @@
 
 <script type="module">
     import { app } from "/javascripts/firebaseInit.js";
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
+    import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
     const db = getFirestore(app);
     $(frm).on("submit",async function(e){
         e.preventDefault();
@@ -37,4 +37,6 @@
             }
         }
     });
+
+    
 </script>
